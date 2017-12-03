@@ -30,7 +30,7 @@
 
 <text id="text" display="none" x="20" y="50"><tspan x="10">Panie Janie, tu jest tekst.</tspan><tspan x="10" dy="20">A tutaj jeszcze dłuższy tekst żeby zobaczyć jak to będzie wyglądało</tspan></text>
 
-<script type="text/ecmascript" xlink:href="../script.min.js" />
+<script type="text/ecmascript" xlink:href="../svg-slide-show.min.js" />
 <script type="text/ecmascript" xlink:href="earthradius.js" />
 </svg>
 
