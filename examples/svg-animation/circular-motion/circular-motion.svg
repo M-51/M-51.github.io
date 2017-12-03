@@ -3,6 +3,6 @@
 
 <circle id="test" cx="0" cy="0" r="20" transform="translate(100,0)"/>
 
-<script type="text/ecmascript" xlink:href="../svg-animation.min.js" />
+<script type="text/ecmascript" xlink:href="../svg-animation.js" />
 <script type="text/ecmascript" xlink:href="circular-motion.js" />
 </svg>
