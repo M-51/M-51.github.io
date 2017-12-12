@@ -1,0 +1,15 @@
+.header {
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+
+.main__example {
+    margin-bottom: 50px;
+}
+pre {
+    white-space: pre-wrap;
+}
+.code {
+    padding: 10px;
+    background: #f7f7f9;
+}

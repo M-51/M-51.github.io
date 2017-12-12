@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>SVG Animation</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+        <link rel="stylesheet" href="../style.css">
+        <script src="svganimation.min.js"></script>
+    </head>
+    <body>
+        <header class="container header">
+            <h1>SVG Animation simple examples</h1>
+        </header>
+        <main class="container main">
+            <h2>1. Translate</h2>
+            <div class="row main__example">
+                <div class="col-md-6">
+                        <svg viewBox="-5 -50 100 100" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="svg img-fluid">
+                            <rect id="ex1" x="-3" y="-3" width="6" height="6" fill="#444" />
+                        </svg>
+                        <script>
+                            const ex1 = new SVGAnimation();
+                            ex1.add({
+                                object: '#ex1',
+                                animation: {
+                                    transform: {
+                                        translate: {
+                                            x: t => 10 * t,
+                                            y: t => 10 * Math.sin(t),
+                                        }
+                                    }
+                                }
+                            })
+                          </script>
+                </div>
+                <div class="col-md-6 code">
+<pre>
+<code>
+&lt;script src=&quot;svganimation.min.js&quot;&gt;&lt;/script&gt;
+
+&lt;svg viewBox=&quot;-5 -50 200 100&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; xmlns:xlink=&quot;http://www.w3.org/1999/xlink&quot; version=&quot;1.1&quot; class=&quot;svg&quot;&gt;
+    &lt;rect id=&quot;ex1&quot; x=&quot;-3&quot; y=&quot;-3&quot; width=&quot;6&quot; height=&quot;6&quot; fill=&quot;#444&quot; /&gt;
+&lt;/svg&gt;
+
+&lt;script&gt;
+const ex1 = new SVGAnimation();
+ex1.add({
+    object: '#ex1',
+    animation: {
+        transform: {
+            translate: {
+                x: t => t,
+                y: t => 10 * Math.sin(t),
+            }
+        }
+    }
+})    
+&lt;/script&gt;</code></pre>
+</div>
+</div>
+<h2>2. Translate and rotate</h2>
+<div class="row main__example">
+<div class="col-md">
+    <svg viewBox="-5 -50 100 100" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="svg img-fluid">
+        <rect id="ex2" x="-3" y="-3" width="6" height="6" fill="#444" />
+    </svg>
+    <script>
+    const ex2 = new SVGAnimation();
+    ex2.add({
+        object: '#ex2',
+        animation: {
+            transform: {
+                translate: {
+                    x: t => 10 * t,
+                    y: t => 10 * Math.sin(t),
+                },
+            rotate: t => t,
+            }
+        }
+    })
+</script>
+</div>
+<div class="col-md code">
+<pre>
+<code>
+&lt;script src=&quot;svganimation.min.js&quot;&gt;&lt;/script&gt;
+
+&lt;svg viewBox=&quot;-5 -50 100 100&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; xmlns:xlink=&quot;http://www.w3.org/1999/xlink&quot; version=&quot;1.1&quot;&gt;
+    &lt;rect id=&quot;ex2&quot; x=&quot;-3&quot; y=&quot;-3&quot; width=&quot;6&quot; height=&quot;6&quot; fill="#444" /&gt;
+&lt;/svg&gt;
+
+&lt;script&gt;
+const ex2 = new SVGAnimation();
+ex2.add({
+    object: '#ex2',
+    animation: {
+        transform: {
+            translate: {
+                x: t =&gt; 10 * t,
+                y: t =&gt; 10 * Math.sin(t),
+            },
+            rotate: t =&gt; t,
+        }
+    }
+})
+&lt;/script&gt;</code>
+</pre>
+</div>
+</div>
+<h2>3. Translate, rotate and scale</h2>
+<div class="row main__example">
+<div class="col-md">
+    <svg viewBox="-5 -50 100 100" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="svg img-fluid">
+        <rect id="ex3" x="-3" y="-3" width="6" height="6"  fill="#444"/>
+    </svg>
+    <script>
+    const ex3 = new SVGAnimation();
+    ex3.add({
+        object: '#ex3',
+        animation: {
+            transform: {
+                translate: {
+                    x: t => 10 * t,
+                    y: t => 10 * Math.sin(t),
+                },
+            rotate: t => t,
+            scale: t => Math.sin(t) + 1,
+            }
+        }
+    })
+</script>
+</div>
+<div class="col-md code">
+<pre>
+<code>
+&lt;script src=&quot;svganimation.min.js&quot;&gt;&lt;/script&gt;
+
+&lt;svg viewBox=&quot;-5 -50 100 100&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; xmlns:xlink=&quot;http://www.w3.org/1999/xlink&quot; version=&quot;1.1&quot;&gt;
+    &lt;rect id=&quot;ex3&quot; x=&quot;-3&quot; y=&quot;-3&quot; width=&quot;6&quot; height=&quot;6&quot; fill="#444" /&gt;
+&lt;/svg&gt;
+
+&lt;script&gt;
+const ex3 = new SVGAnimation();
+ex3.add({
+    object: '#ex3',
+    animation: {
+        transform: {
+            translate: {
+                x: t =&gt; 10 * t,
+                y: t =&gt; 10 * Math.sin(t),
+            },
+            rotate: t =&gt; t,
+            scale: t =&gt; Math.sin(t) + 1,
+        }
+    }
+})
+&lt;/script&gt;</code>
+</pre>
+</div>
+</div>
+<h2>4. Other attributes (stroke-width)</h2>
+<div class="row main__example">
+<div class="col-md">
+    <svg viewBox="-5 -50 100 100" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="svg img-fluid">
+        <rect id="ex4" x="0" y="0" width="20" height="20" fill="none" stroke="#444" stroke-width="1" />
+    </svg>
+    <script>
+    const ex4 = new SVGAnimation();
+    ex4.add({
+        object: '#ex4',
+        animation: {
+            'stroke-width': {
+                value: t => Math.sin(t) + 1,
+            }
+        }
+    })
+</script>
+</div>
+<div class="col-md code">
+<pre>
+<code>
+&lt;script src=&quot;svganimation.min.js&quot;&gt;&lt;/script&gt;
+
+&lt;svg viewBox=&quot;-5 -50 100 100&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; xmlns:xlink=&quot;http://www.w3.org/1999/xlink&quot; version=&quot;1.1&quot;&gt;
+    &lt;rect id=&quot;ex4&quot; x=&quot;0&quot; y=&quot;0&quot; width=&quot;20&quot; height=&quot;20&quot; fill="none" stroke="#444" stroke-width="1" /&gt;
+&lt;/svg&gt;
+
+&lt;script&gt;
+const ex4 = new SVGAnimation();
+ex4.add({
+    object: '#ex4',
+    animation: {
+        'stroke-width': {
+            value: t => Math.sin(t) + 1,
+        }
+    }
+})
+&lt;/script&gt;</code>
+</pre>
+</div>
+</div>
+</main>
+</body>
+</html>
