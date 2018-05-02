@@ -127,6 +127,6 @@
         </body>
     </foreignObject>
 </g>
-<script type="text/ecmascript" xlink:href="../svganimation.min.js.js" />
+<script type="text/ecmascript" xlink:href="../svganimation.min.js" />
 <script type="text/ecmascript" xlink:href="earth-radius-mobile.js" />
 </svg>
