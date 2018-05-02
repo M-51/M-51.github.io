@@ -11,13 +11,25 @@
             margin-left: auto;
             margin-right: auto;
             height: auto;
-            border: 1px solid grey;
             display: block;
             margin-top: 50px;
+        }
+        #svg-mobile {
+            display: none;
+            border: 1px solid grey;
+        }
+        @media screen and (orientation:portrait) {
+            #svg-mobile {
+                display: block;
+            }
+            #svg {
+                display: none;
+            }
         }
     </style>
 </head>
 <body>
     <object id="svg" data="earth-radius.svg" type="image/svg+xml"></object>
+    <object id="svg-mobile" data="earth-radius-mobile.svg" type="image/svg+xml"></object>
 </body>
 </html>
