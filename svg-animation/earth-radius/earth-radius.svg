@@ -14,7 +14,10 @@
     <marker id="Triangle" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="12" markerHeight="12" orient="auto-start-reverse">
       <path d="M 0 0 L 10 5 L 0 10 z" />
     </marker>
-  </defs>
+    <marker id="smallTriangle" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" />
+    </marker>
+</defs>
 <g id="earth-group" transform="translate(100 300) scale(0.6)" stroke="#000">
     <g id="rays" stroke="#f66" stroke-dasharray="10" transform="rotate(-23)" stroke-width="2">
         <line class="other-rays" x1="500" y1="200" x2="800" y2="200"/>
@@ -53,6 +56,11 @@
         <path d="M320 -215 l -70 -40 l -120 0" fill="none" marker-start="url(#Triangle)"/>
         <text x="140" y="-260" stroke="none">Aleksandria</text>
     </g>
+    <g id="distance" opacity="0">
+        <path id="distance-line" d="M418.27 -38.07 A 420 420 0 0 1 420 0" fill="none" transform="rotate(-24)" marker-start="url(#smallTriangle)" marker-end="url(#smallTriangle)" stroke-width="1"/>
+        <text id="distance-text" font-size="18" x="390" y="-190" stroke="none">800 km</text>
+    </g>
+
 </g>
 
 <foreignObject id="text-1" x="600" y="100" width="350" height="200">
@@ -61,47 +69,63 @@
         <p>Dlatego promienie słoneczne (oznaczone <span style="color: #f66;">przerywaną linią</span>), są w przybliżeniu równoległe do siebie.</p>
     </body>
 </foreignObject>
-<foreignObject opacity="0" id="text-2" x="600" y="100" width="350" height="200">
+<foreignObject opacity="0" display="none" id="text-2" x="600" y="100" width="350" height="200">
     <body xmlns="http://www.w3.org/1999/xhtml">
         <p>W dniu przesilenia letniego, promienie Słońca padają na zwrotnik Raka pod kątem prostym do powierzchni Ziemi.</p>
     </body>
 </foreignObject>
-<foreignObject opacity="0" id="text-3" x="600" y="200" width="350" height="200">
+<foreignObject opacity="0" display="none" id="text-3" x="600" y="200" width="350" height="200">
     <body xmlns="http://www.w3.org/1999/xhtml">
         <p>W pobliżu zwrotnika Raka, na terytorium Egiptu znajduje się miasto <b>Syene</b>, obecnie znane jako Asuan.</p>
     </body>
 </foreignObject>
-<foreignObject opacity="0" id="text-4" x="600" y="300" width="350" height="100">
+<foreignObject opacity="0" display="none" id="text-4" x="600" y="300" width="350" height="100">
     <body xmlns="http://www.w3.org/1999/xhtml">
         <p>Tego dnia, w południe, w Syene, przedmioty wbite prostopadle w ziemię nie rzucają cienia słonecznego.</p>
     </body>
 </foreignObject>
-<foreignObject opacity="0" id="text-5" x="600" y="200" width="350" height="100">
+<foreignObject opacity="0" display="none" id="text-5" x="600" y="200" width="350" height="100">
     <body xmlns="http://www.w3.org/1999/xhtml">
         <p>Na północ od Syene, położona jest Aleksandria.</p>
     </body>
 </foreignObject>
-<foreignObject opacity="0" id="text-6" x="600" y="260" width="350" height="150">
+<foreignObject opacity="0" display="none" id="text-6" x="600" y="260" width="350" height="150">
     <body xmlns="http://www.w3.org/1999/xhtml">
         <p>Gdzie - w tym samym czasie - promienie słoneczne rzucają cień na pionowe przedmioty.</p>
     </body>
 </foreignObject>
-<foreignObject opacity="0" id="text-7" x="600" y="200" width="350" height="100">
+<foreignObject opacity="0" display="none" id="text-7" x="600" y="200" width="350" height="100">
     <body xmlns="http://www.w3.org/1999/xhtml">
         <p>Promienie słoneczne są odchylone od pionu o 7.2&#xB0;</p>
     </body>
 </foreignObject>
-<foreignObject opacity="0" id="text-8" x="600" y="100" width="350" height="100">
+<foreignObject opacity="0" display="none" id="text-8" x="600" y="100" width="350" height="100">
     <body xmlns="http://www.w3.org/1999/xhtml">
         <p>Przedłużone linie pionów, w Syene i Aleksandrii, krzyżują się w środku planety.</p>
     </body>
 </foreignObject>
-<foreignObject opacity="0" id="text-9" x="600" y="200" width="350" height="150">
+<foreignObject opacity="0" display="none" id="text-9" x="600" y="200" width="350" height="150">
     <body xmlns="http://www.w3.org/1999/xhtml">
         <p>Jako że, promienie słoneczne są do siebie równoległe, kąt tworzony przez przedłużone linie pionów musi mieć także 7.2&#xB0;</p>
     </body>
 </foreignObject>
+<foreignObject opacity="0" display="none" id="text-10" x="600" y="100" width="350" height="100">
+    <body xmlns="http://www.w3.org/1999/xhtml">
+        <p>7.2&#xB0; to 1/50 część pełnego okręgu.</p>
+        <p>(7.2&#xB0; &#215; 50 = 360&#xB0;)</p>
+    </body>
+</foreignObject>
+<foreignObject opacity="0" display="none" id="text-11" x="600" y="180" width="350" height="100">
+    <body xmlns="http://www.w3.org/1999/xhtml">
+        <p>Natomiast odległość między Syene a Aleksandrią, wynosi około 800 km.</p>
+    </body>
+</foreignObject>
+<foreignObject opacity="0" display="none" id="text-12" x="600" y="250" width="320" height="100">
+    <body xmlns="http://www.w3.org/1999/xhtml">
+        <p>Wynika z tego, że obwód Ziemi to 50 &#215; 800 km = <span style="color: #f66;">40000 km</span></p>
+    </body>
+</foreignObject>
 
-<script type="text/ecmascript" xlink:href="../svganimation.min.js" />
+<script type="text/ecmascript" xlink:href="../../dist/js/svganimation.js" />
 <script type="text/ecmascript" xlink:href="earth-radius.js" />
 </svg>
