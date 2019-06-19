@@ -2,203 +2,523 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>SVG Animation</title>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
-        <link rel="stylesheet" href="../style.css">
-        <script src="svganimation.min.js"></script>
+        <title>SVG Animation Player examples</title>
+        <link rel="stylesheet" href="../style.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/svg-animation-player@0.1.4/dist/svganimationplayer.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.8/styles/tomorrow.min.css">
+        <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.15.8/build/highlight.min.js"></script>
     </head>
-    <body>
-        <header class="container header">
-            <h1>SVG Animation simple examples</h1>
+    <body class="svganimationplayer">
+        <header class="svganimationplayer__header">
+            <h1><a href="https://www.npmjs.com/package/svg-animation-player">SVG Animation Player</a> examples</h1>
         </header>
-        <main class="container main">
-            <h2>1. Translate</h2>
-            <div class="row main__example">
-                <div class="col-md-6">
-                        <svg viewBox="-5 -50 100 100" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="svg img-fluid">
-                            <rect id="ex1" x="-3" y="-3" width="6" height="6" fill="#444" />
-                        </svg>
-                        <script>
-                            const ex1 = new SVGAnimation();
-                            ex1.add({
-                                object: '#ex1',
-                                animation: {
-                                    transform: {
-                                        translate: {
-                                            x: t => 10 * t,
-                                            y: t => 10 * Math.sin(t),
-                                        }
-                                    }
-                                }
-                            })
-                          </script>
-                </div>
-                <div class="col-md-6 code">
-<pre>
-<code>
-&lt;script src=&quot;svganimation.min.js&quot;&gt;&lt;/script&gt;
-
-&lt;svg viewBox=&quot;-5 -50 200 100&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; xmlns:xlink=&quot;http://www.w3.org/1999/xlink&quot; version=&quot;1.1&quot; class=&quot;svg&quot;&gt;
-    &lt;rect id=&quot;ex1&quot; x=&quot;-3&quot; y=&quot;-3&quot; width=&quot;6&quot; height=&quot;6&quot; fill=&quot;#444&quot; /&gt;
+        <main class="svganimationplayer__main">
+            <section class="example">
+                <header class="example__header">
+                    <h2>Transform</h2>
+                </header>
+                <svg class="example__svg" viewBox="-5 -50 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <rect id="ex1" x="-3" y="-3" width="6" height="6" />
+                </svg>
+                <div class="example__code">
+SVG
+<pre><code class="svg">
+&lt;svg viewBox=&quot;-5 -50 100 100&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;&gt;
+    &lt;rect id=&quot;ex1&quot; x=&quot;-3&quot; y=&quot;-3&quot; width=&quot;6&quot; height=&quot;6&quot; /&gt;
 &lt;/svg&gt;
+</code></pre>
+Javascript
+<pre><code class="javascript">
+const ex1 = new SVGAnimationPlayer();
 
-&lt;script&gt;
-const ex1 = new SVGAnimation();
 ex1.add({
     object: '#ex1',
     animation: {
         transform: {
+            range: [0, 3],
             translate: {
-                x: t => t,
-                y: t => 10 * Math.sin(t),
-            }
-        }
-    }
-})    
-&lt;/script&gt;</code></pre>
-</div>
-</div>
-<h2>2. Translate and rotate</h2>
-<div class="row main__example">
-<div class="col-md">
-    <svg viewBox="-5 -50 100 100" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="svg img-fluid">
-        <rect id="ex2" x="-3" y="-3" width="6" height="6" fill="#444" />
-    </svg>
-    <script>
-    const ex2 = new SVGAnimation();
-    ex2.add({
-        object: '#ex2',
-        animation: {
-            transform: {
-                translate: {
-                    x: t => 10 * t,
-                    y: t => 10 * Math.sin(t),
+                x: {
+                    to: 80,
                 },
-            rotate: t => t,
-            }
-        }
-    })
-</script>
-</div>
-<div class="col-md code">
-<pre>
-<code>
-&lt;script src=&quot;svganimation.min.js&quot;&gt;&lt;/script&gt;
-
-&lt;svg viewBox=&quot;-5 -50 100 100&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; xmlns:xlink=&quot;http://www.w3.org/1999/xlink&quot; version=&quot;1.1&quot;&gt;
-    &lt;rect id=&quot;ex2&quot; x=&quot;-3&quot; y=&quot;-3&quot; width=&quot;6&quot; height=&quot;6&quot; fill="#444" /&gt;
+                y: t => 10 * Math.sin(4 * t),
+            },
+            rotate: {
+                to: 2 * Math.PI,
+            },
+            scale: t => Math.sin(t) + 1,
+        },
+    },
+});
+</code></pre>
+                </div>
+                <script>const ex1=new SVGAnimationPlayer;ex1.add({object:"#ex1",animation:{transform:{range:[0,3],translate:{x:{to:80},y:a=>10*Math.sin(4*a)},rotate:{to:2*Math.PI},scale:a=>Math.sin(a)+1}}});</script>
+            </section>
+            <section class="example">
+                <header class="example__header">
+                    <h2>Other properties</h2>
+                </header>
+                <svg class="example__svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <rect id="ex2" x="40" y="40" width="20" height="20" fill="none" stroke="#000" />
+                </svg>
+                <div class="example__code">
+SVG
+<pre><code class="svg">
+&lt;svg viewBox=&quot;0 0 100 100&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;&gt;
+    &lt;rect id=&quot;ex2&quot; x=&quot;40&quot; y=&quot;40&quot; width=&quot;20&quot; height=&quot;20&quot; fill=&quot;none&quot; stroke=&quot;#000&quot; /&gt;
 &lt;/svg&gt;
+</code></pre>
+Javascript
+<pre><code class="javascript">
+const ex2 = new SVGAnimationPlayer();
 
-&lt;script&gt;
-const ex2 = new SVGAnimation();
 ex2.add({
     object: '#ex2',
     animation: {
-        transform: {
-            translate: {
-                x: t =&gt; 10 * t,
-                y: t =&gt; 10 * Math.sin(t),
+        width: {
+            range: [0, 4],
+            value: {
+                to: 50,
             },
-            rotate: t =&gt; t,
-        }
-    }
-})
-&lt;/script&gt;</code>
-</pre>
-</div>
-</div>
-<h2>3. Translate, rotate and scale</h2>
-<div class="row main__example">
-<div class="col-md">
-    <svg viewBox="-5 -50 100 100" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="svg img-fluid">
-        <rect id="ex3" x="-3" y="-3" width="6" height="6"  fill="#444"/>
-    </svg>
-    <script>
-    const ex3 = new SVGAnimation();
-    ex3.add({
-        object: '#ex3',
-        animation: {
-            transform: {
-                translate: {
-                    x: t => 10 * t,
-                    y: t => 10 * Math.sin(t),
-                },
-            rotate: t => t,
-            scale: t => Math.sin(t) + 1,
-            }
-        }
-    })
-</script>
-</div>
-<div class="col-md code">
-<pre>
-<code>
-&lt;script src=&quot;svganimation.min.js&quot;&gt;&lt;/script&gt;
+        },
+        'stroke-width': {
+            range: [0, 4],
+            value: t => 1 + Math.sin(t),
+        },
+    },
+});
+</code></pre>
+                </div>
+                <script>const ex2=new SVGAnimationPlayer;ex2.add({object:"#ex2",animation:{width:{range:[0,4],value:{to:50}},"stroke-width":{range:[0,4],value:e=>1+Math.sin(e)}}});</script>
+            </section>
 
-&lt;svg viewBox=&quot;-5 -50 100 100&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; xmlns:xlink=&quot;http://www.w3.org/1999/xlink&quot; version=&quot;1.1&quot;&gt;
-    &lt;rect id=&quot;ex3&quot; x=&quot;-3&quot; y=&quot;-3&quot; width=&quot;6&quot; height=&quot;6&quot; fill="#444" /&gt;
+            <section class="example">
+                <header class="example__header">
+                    <h2>Multi stage</h2>
+                </header>
+                <svg class="example__svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <rect id="ex3" x="10" y="10" width="10" height="10" />
+                </svg>
+                <div class="example__code">
+SVG
+<pre><code class="svg">
+&lt;svg viewBox=&quot;0 0 100 100&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;&gt;
+    &lt;rect id=&quot;ex3&quot; x=&quot;10&quot; y=&quot;10&quot; width=&quot;10&quot; height=&quot;10&quot; /&gt;
 &lt;/svg&gt;
+</code></pre>
+Javascript
+<pre><code class="javascript">
+const ex3 = new SVGAnimationPlayer();
 
-&lt;script&gt;
-const ex3 = new SVGAnimation();
 ex3.add({
     object: '#ex3',
     animation: {
+        transform: [{
+            range: [0, 1],
+            translate: {
+                x: {
+                    to: 70,
+                },
+            },
+        }, {
+            range: [1, 2],
+            translate: {
+                y: {
+                    to: 70,
+                },
+            },
+        }, {
+            range: [2, 3],
+            translate: {
+                x: {
+                    to: 0,
+                },
+            },
+        }, {
+            range: [3, 4],
+            translate: {
+                y: {
+                    to: 0,
+                },
+            },
+        }],
+    },
+});
+</code></pre>
+                </div>
+                <script>const ex3=new SVGAnimationPlayer;ex3.add({object:"#ex3",animation:{transform:[{range:[0,1],translate:{x:{to:70}}},{range:[1,2],translate:{y:{to:70}}},{range:[2,3],translate:{x:{to:0}}},{range:[3,4],translate:{y:{to:0}}}]}});</script>
+            </section>
+
+            <section class="example">
+                <header class="example__header">
+                    <h2>Multi objects</h2>
+                </header>
+                <svg class="example__svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <rect id="ex4-1" x="10" y="10" width="10" height="10" />
+                    <rect id="ex4-2" x="10" y="30" width="10" height="10" />
+                    <rect id="ex4-3" x="10" y="50" width="10" height="10" />
+                </svg>
+                <div class="example__code">
+SVG
+<pre><code class="svg">
+&lt;svg viewBox=&quot;0 0 100 100&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;&gt;
+    &lt;rect id=&quot;ex4-1&quot; x=&quot;10&quot; y=&quot;10&quot; width=&quot;10&quot; height=&quot;10&quot; /&gt;
+    &lt;rect id=&quot;ex4-2&quot; x=&quot;10&quot; y=&quot;30&quot; width=&quot;10&quot; height=&quot;10&quot; /&gt;
+    &lt;rect id=&quot;ex4-3&quot; x=&quot;10&quot; y=&quot;50&quot; width=&quot;10&quot; height=&quot;10&quot; /&gt;
+&lt;/svg&gt;
+</code></pre>
+Javascript
+<pre><code class="javascript">
+const ex4 = new SVGAnimationPlayer();
+
+ex4.add({
+    object: '#ex4-1',
+    animation: {
+        transform: {
+            range: [0, 1],
+            translate: {
+                x: {
+                    to: 70,
+                },
+            },
+        },
+    },
+}, {
+    object: '#ex4-2',
+    animation: {
+        transform: {
+            range: [0.2, 1.2],
+            translate: {
+                x: {
+                    to: 70,
+                },
+            },
+        },
+    },
+}, {
+    object: '#ex4-3',
+    animation: {
+        transform: {
+            range: [0.4, 1.4],
+            translate: {
+                x: {
+                    to: 70,
+                },
+            },
+        },
+    },
+});
+</code></pre>
+                </div>
+                <script>const ex4=new SVGAnimationPlayer;ex4.add({object:"#ex4-1",animation:{transform:{range:[0,1],translate:{x:{to:70}}}}},{object:"#ex4-2",animation:{transform:{range:[.2,1.2],translate:{x:{to:70}}}}},{object:"#ex4-3",animation:{transform:{range:[.4,1.4],translate:{x:{to:70}}}}});</script>
+            </section>
+            <section class="example">
+                <header class="example__header">
+                    <h2>Easings</h2>
+                </header>
+                <svg class="example__svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <rect id="ex5-1" x="10" y="10" width="5" height="5" />
+                    <rect id="ex5-2" x="10" y="20" width="5" height="5" />
+                    <rect id="ex5-3" x="10" y="30" width="5" height="5" />
+                    <rect id="ex5-4" x="10" y="40" width="5" height="5" />
+                    <rect id="ex5-5" x="10" y="50" width="5" height="5" />
+                    <rect id="ex5-6" x="10" y="60" width="5" height="5" />
+                    <rect id="ex5-7" x="10" y="70" width="5" height="5" />
+                
+                    <text x="30" y="14" font-size="4">linear</text>
+                    <text x="30" y="24" font-size="4">easeInQuad</text>
+                    <text x="30" y="34" font-size="4">easeOutQuad</text>
+                    <text x="30" y="44" font-size="4">easeInOutQuad - default easing</text>
+                    <text x="30" y="54" font-size="4">easeInCubic</text>
+                    <text x="30" y="64" font-size="4">easeOutCubic</text>
+                    <text x="30" y="74" font-size="4">easeInOutCubic</text>
+                </svg>
+                <div class="example__code">
+SVG
+<pre><code class="svg">
+&lt;svg viewBox=&quot;0 0 100 100&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;&gt;
+    &lt;rect id=&quot;ex5-1&quot; x=&quot;10&quot; y=&quot;10&quot; width=&quot;5&quot; height=&quot;5&quot; /&gt;
+    &lt;rect id=&quot;ex5-2&quot; x=&quot;10&quot; y=&quot;20&quot; width=&quot;5&quot; height=&quot;5&quot; /&gt;
+    &lt;rect id=&quot;ex5-3&quot; x=&quot;10&quot; y=&quot;30&quot; width=&quot;5&quot; height=&quot;5&quot; /&gt;
+    &lt;rect id=&quot;ex5-4&quot; x=&quot;10&quot; y=&quot;40&quot; width=&quot;5&quot; height=&quot;5&quot; /&gt;
+    &lt;rect id=&quot;ex5-5&quot; x=&quot;10&quot; y=&quot;50&quot; width=&quot;5&quot; height=&quot;5&quot; /&gt;
+    &lt;rect id=&quot;ex5-6&quot; x=&quot;10&quot; y=&quot;60&quot; width=&quot;5&quot; height=&quot;5&quot; /&gt;
+    &lt;rect id=&quot;ex5-7&quot; x=&quot;10&quot; y=&quot;70&quot; width=&quot;5&quot; height=&quot;5&quot; /&gt;
+
+    &lt;text x=&quot;30&quot; y=&quot;14&quot; font-size=&quot;4&quot;&gt;linear&lt;/text&gt;
+    &lt;text x=&quot;30&quot; y=&quot;24&quot; font-size=&quot;4&quot;&gt;easeInQuad&lt;/text&gt;
+    &lt;text x=&quot;30&quot; y=&quot;34&quot; font-size=&quot;4&quot;&gt;easeOutQuad&lt;/text&gt;
+    &lt;text x=&quot;30&quot; y=&quot;44&quot; font-size=&quot;4&quot;&gt;easeInOutQuad - default easing&lt;/text&gt;
+    &lt;text x=&quot;30&quot; y=&quot;54&quot; font-size=&quot;4&quot;&gt;easeInCubic&lt;/text&gt;
+    &lt;text x=&quot;30&quot; y=&quot;64&quot; font-size=&quot;4&quot;&gt;easeOutCubic&lt;/text&gt;
+    &lt;text x=&quot;30&quot; y=&quot;74&quot; font-size=&quot;4&quot;&gt;easeInOutCubic&lt;/text&gt;
+&lt;/svg&gt;
+</code></pre>
+Javascript
+<pre><code class="javascript">
+const ex5 = new SVGAnimationPlayer();
+
+const obj1 = {
+    object: '#ex5-1',
+    animation: {
+        transform: {
+            range: [0, 2],
+            translate: {
+                x: {
+                    to: 80,
+                    easing: 'linear',
+                },
+            },
+        },
+    },
+};
+
+const obj2 = {
+    object: '#ex5-2',
+    animation: {
+        transform: {
+            range: [0, 2],
+            translate: {
+                x: {
+                    to: 80,
+                    easing: 'easeInQuad',
+                },
+            },
+        },
+    },
+};
+
+const obj3 = {
+    object: '#ex5-3',
+    animation: {
+        transform: {
+            range: [0, 2],
+            translate: {
+                x: {
+                    to: 80,
+                    easing: 'easeOutQuad',
+                },
+            },
+        },
+    },
+};
+
+const obj4 = {
+    object: '#ex5-4',
+    animation: {
+        transform: {
+            range: [0, 2],
+            translate: {
+                x: {
+                    to: 80,
+                    easing: 'easeInOutQuad', // default easing
+                },
+            },
+        },
+    },
+};
+
+const obj5 = {
+    object: '#ex5-5',
+    animation: {
+        transform: {
+            range: [0, 2],
+            translate: {
+                x: {
+                    to: 80,
+                    easing: 'easeInCubic',
+                },
+            },
+        },
+    },
+};
+
+const obj6 = {
+    object: '#ex5-6',
+    animation: {
+        transform: {
+            range: [0, 2],
+            translate: {
+                x: {
+                    to: 80,
+                    easing: 'easeOutCubic',
+                },
+            },
+        },
+    },
+};
+
+const obj7 = {
+    object: '#ex5-7',
+    animation: {
+        transform: {
+            range: [0, 2],
+            translate: {
+                x: {
+                    to: 80,
+                    easing: 'easeInOutCubic',
+                },
+            },
+        },
+    },
+};
+
+
+ex5.add(obj1, obj2, obj3, obj4, obj5, obj6, obj7);
+    
+</code></pre>
+                </div>
+                <script>const ex5=new SVGAnimationPlayer,obj1={object:"#ex5-1",animation:{transform:{range:[0,2],translate:{x:{to:80,easing:"linear"}}}}},obj2={object:"#ex5-2",animation:{transform:{range:[0,2],translate:{x:{to:80,easing:"easeInQuad"}}}}},obj3={object:"#ex5-3",animation:{transform:{range:[0,2],translate:{x:{to:80,easing:"easeOutQuad"}}}}},obj4={object:"#ex5-4",animation:{transform:{range:[0,2],translate:{x:{to:80,easing:"easeInOutQuad"}}}}},obj5={object:"#ex5-5",animation:{transform:{range:[0,2],translate:{x:{to:80,easing:"easeInCubic"}}}}},obj6={object:"#ex5-6",animation:{transform:{range:[0,2],translate:{x:{to:80,easing:"easeOutCubic"}}}}},obj7={object:"#ex5-7",animation:{transform:{range:[0,2],translate:{x:{to:80,easing:"easeInOutCubic"}}}}};ex5.add(obj1,obj2,obj3,obj4,obj5,obj6,obj7);</script>
+            </section>
+            <section class="example">
+                <header class="example__header">
+                    <h2>Instant</h2>
+                </header>
+                <svg class="example__svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <rect id="ex6" x="10" y="10" width="30" height="30" />
+                </svg>
+                <div class="example__code">
+SVG
+<pre><code class="svg">
+&lt;svg viewBox=&quot;0 0 100 100&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;&gt;
+    &lt;rect id=&quot;ex6&quot; x=&quot;10&quot; y=&quot;10&quot; width=&quot;30&quot; height=&quot;30&quot; /&gt;
+&lt;/svg&gt;
+</code></pre>
+Javascript
+<pre><code class="javascript">
+const ex6 = new SVGAnimationPlayer();
+
+ex6.add({
+    object: '#ex6',
+    animation: {
+        width: [
+            {
+                range: 1,
+                value: 20,
+            },
+            {
+                range: 2,
+                value: 40,
+            },
+            {
+                range: 3,
+                value: 10,
+            },
+            {
+                range: 4,
+                value: 50,
+            },
+        ],
+    },
+});
+</code></pre>
+                </div>
+                <script>const ex6=new SVGAnimationPlayer;ex6.add({object:"#ex6",animation:{width:[{range:1,value:20},{range:2,value:40},{range:3,value:10},{range:4,value:50}]}});</script>
+            </section>
+            <section class="example">
+                <header class="example__header">
+                    <h2>Infinite</h2>
+                </header>
+                <svg class="example__svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <rect id="ex7" x="45" y="45" transform="translate(30, 0)" width="10" height="10" />
+                </svg>
+                <div class="example__code">
+SVG
+<pre><code class="svg">
+&lt;svg viewBox=&quot;0 0 100 100&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;&gt;
+    &lt;rect id=&quot;ex7&quot; x=&quot;45&quot; y=&quot;45&quot; transform=&quot;translate(30, 0)&quot; width=&quot;10&quot; height=&quot;10&quot; /&gt;
+&lt;/svg&gt;
+</code></pre>
+Javascript
+<pre><code class="javascript">
+const ex7 = new SVGAnimationPlayer();
+
+ex7.add({
+    object: '#ex7',
+    animation: {
         transform: {
             translate: {
-                x: t =&gt; 10 * t,
-                y: t =&gt; 10 * Math.sin(t),
+                x: t => 30 * Math.cos(t),
+                y: t => 30 * Math.sin(t),
             },
-            rotate: t =&gt; t,
-            scale: t =&gt; Math.sin(t) + 1,
-        }
-    }
-})
-&lt;/script&gt;</code>
-</pre>
-</div>
-</div>
-<h2>4. Other attributes (stroke-width)</h2>
-<div class="row main__example">
-<div class="col-md">
-    <svg viewBox="-5 -50 100 100" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="svg img-fluid">
-        <rect id="ex4" x="0" y="0" width="20" height="20" fill="none" stroke="#444" stroke-width="1" />
-    </svg>
-    <script>
-    const ex4 = new SVGAnimation();
-    ex4.add({
-        object: '#ex4',
-        animation: {
-            'stroke-width': {
-                value: t => Math.sin(t) + 1,
-            }
-        }
-    })
-</script>
-</div>
-<div class="col-md code">
-<pre>
-<code>
-&lt;script src=&quot;svganimation.min.js&quot;&gt;&lt;/script&gt;
-
-&lt;svg viewBox=&quot;-5 -50 100 100&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; xmlns:xlink=&quot;http://www.w3.org/1999/xlink&quot; version=&quot;1.1&quot;&gt;
-    &lt;rect id=&quot;ex4&quot; x=&quot;0&quot; y=&quot;0&quot; width=&quot;20&quot; height=&quot;20&quot; fill="none" stroke="#444" stroke-width="1" /&gt;
+        },
+    },
+});
+</code></pre>
+                </div>
+                <script>const ex7=new SVGAnimationPlayer;ex7.add({object:"#ex7",animation:{transform:{translate:{x:a=>30*Math.cos(a),y:a=>30*Math.sin(a)}}}});</script>
+            </section>
+            <section class="example">
+                <header class="example__header">
+                    <h2>Add programmatically</h2>
+                </header>
+                <svg class="example__svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <rect class="ex8" y="10" x="10" width="5" height="5" />
+                    <rect class="ex8" y="18" x="10" width="5" height="5" />
+                    <rect class="ex8" y="26" x="10" width="5" height="5" />
+                    <rect class="ex8" y="34" x="10" width="5" height="5" />
+                    <rect class="ex8" y="42" x="10" width="5" height="5" />
+                    <rect class="ex8" y="50" x="10" width="5" height="5" />
+                    <rect class="ex8" y="58" x="10" width="5" height="5" />
+                    <rect class="ex8" y="66" x="10" width="5" height="5" />
+                    <rect class="ex8" y="74" x="10" width="5" height="5" />
+                </svg>
+                <div class="example__code">
+SVG
+<pre><code class="svg">
+&lt;svg viewBox=&quot;0 0 100 100&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;&gt;
+    &lt;rect class=&quot;ex8&quot; y=&quot;10&quot; x=&quot;10&quot; width=&quot;5&quot; height=&quot;5&quot; /&gt;
+    &lt;rect class=&quot;ex8&quot; y=&quot;18&quot; x=&quot;10&quot; width=&quot;5&quot; height=&quot;5&quot; /&gt;
+    &lt;rect class=&quot;ex8&quot; y=&quot;26&quot; x=&quot;10&quot; width=&quot;5&quot; height=&quot;5&quot; /&gt;
+    &lt;rect class=&quot;ex8&quot; y=&quot;34&quot; x=&quot;10&quot; width=&quot;5&quot; height=&quot;5&quot; /&gt;
+    &lt;rect class=&quot;ex8&quot; y=&quot;42&quot; x=&quot;10&quot; width=&quot;5&quot; height=&quot;5&quot; /&gt;
+    &lt;rect class=&quot;ex8&quot; y=&quot;50&quot; x=&quot;10&quot; width=&quot;5&quot; height=&quot;5&quot; /&gt;
+    &lt;rect class=&quot;ex8&quot; y=&quot;58&quot; x=&quot;10&quot; width=&quot;5&quot; height=&quot;5&quot; /&gt;
+    &lt;rect class=&quot;ex8&quot; y=&quot;66&quot; x=&quot;10&quot; width=&quot;5&quot; height=&quot;5&quot; /&gt;
+    &lt;rect class=&quot;ex8&quot; y=&quot;74&quot; x=&quot;10&quot; width=&quot;5&quot; height=&quot;5&quot; /&gt;
 &lt;/svg&gt;
+</code></pre>
+Javascript
+<pre><code class="javascript">
+const ex8 = new SVGAnimationPlayer();
+const rects = Array.from(document.getElementsByClassName('ex8'));
 
-&lt;script&gt;
-const ex4 = new SVGAnimation();
-ex4.add({
-    object: '#ex4',
-    animation: {
-        'stroke-width': {
-            value: t => Math.sin(t) + 1,
-        }
-    }
-})
-&lt;/script&gt;</code>
-</pre>
-</div>
-</div>
-</main>
-</body>
+rects.forEach((rect, index) => {
+    ex8.add({
+        object: rect,
+        animation: {
+            transform: {
+                range: [index / 5, (index / 5) + 1],
+                translate: {
+                    x: {
+                        to: 80,
+                    },
+                },
+            },
+        },
+    });
+});
+</code></pre>
+                </div>
+                <script>const ex8=new SVGAnimationPlayer,rects=Array.from(document.getElementsByClassName("ex8"));rects.forEach((e,t)=>{ex8.add({object:e,animation:{transform:{range:[t/5,t/5+1],translate:{x:{to:80}}}}})});</script>
+            </section>
+            <section class="example">
+                <header class="example__header">
+                    <h2>Complex examples</h2>
+                </header>
+                 <div class="example__content">
+                        <h3>Animation - Measurement of the Earth's circumference by Eratosthenes (in Polish)</h3>
+                        <ul>
+                            <li><a href="/svg-animation/earth-radius/earth-radius.html">Link to animation</a></li>
+                            <li><a href="https://github.com/M-51/M-51.github.io/tree/master/svg-animation/earth-radius">Link to source code</a></li>
+                        </ul>
+                        <h3>Some animations can be found on my blog (in Polish)</h3>
+                        <ul>
+                            <li><a href="https://m51.pl/">M51 - Blog Popularnonaukowy</a></li>
+                        </ul>
+                 </div>
+                
+            </section>
+        </main>
+    <script>hljs.initHighlightingOnLoad();</script>
+    </body>
 </html>

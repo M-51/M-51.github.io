@@ -1,0 +1,6 @@
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+    <svg viewBox="0 -0 200 200" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1">
+        <rect id="test1" x="-10" y="-10" width="20" height="20" transform="translate(0, 100)"/>
+    <script type="text/ecmascript" xlink:href="https://cdn.jsdelivr.net/npm/svg-animation-player@0.1.4/dist/svganimationplayer.min.js" />
+    <script type="text/ecmascript" xlink:href="readme.js" />
+</svg>

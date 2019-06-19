@@ -1,4 +1,4 @@
-const earthRadius = new SVGAnimation({
+const earthRadius = new SVGAnimationPlayer({
     interfacePosition: [850, 475],
 });
 /* 0 - 25 sec */
